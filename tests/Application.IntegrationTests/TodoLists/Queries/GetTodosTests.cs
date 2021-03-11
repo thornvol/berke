@@ -1,10 +1,10 @@
-﻿using CleanArchitecture.Application.TodoLists.Queries.GetTodos;
-using CleanArchitecture.Domain.Entities;
-using CleanArchitecture.Domain.ValueObjects;
-using FluentAssertions;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using System.Linq;
 using System.Threading.Tasks;
+using BerkeGaming.Application.TodoLists.Queries.GetTodos;
+using BerkeGaming.Domain.Entities;
+using BerkeGaming.Domain.ValueObjects;
+using FluentAssertions;
 
 namespace CleanArchitecture.Application.IntegrationTests.TodoLists.Queries
 {
@@ -28,7 +28,7 @@ namespace CleanArchitecture.Application.IntegrationTests.TodoLists.Queries
             await AddAsync(new TodoList
             {
                 Title = "Shopping",
-                Colour = Colour.Blue,
+                Color = Color.Blue,
                 Items =
                     {
                         new TodoItem { Title = "Apples", Done = true },

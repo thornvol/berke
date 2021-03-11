@@ -1,8 +1,8 @@
-﻿using CleanArchitecture.Application.TodoLists.Queries.ExportTodos;
+﻿using System.Globalization;
+using BerkeGaming.Application.TodoLists.Queries.ExportTodos;
 using CsvHelper.Configuration;
-using System.Globalization;
 
-namespace CleanArchitecture.Infrastructure.Files.Maps
+namespace BerkeGaming.Infrastructure.Files.Maps
 {
     public class TodoItemRecordMap : ClassMap<TodoItemRecord>
     {

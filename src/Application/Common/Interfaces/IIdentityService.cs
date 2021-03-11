@@ -1,7 +1,7 @@
-﻿using CleanArchitecture.Application.Common.Models;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using BerkeGaming.Application.Common.Models;
 
-namespace CleanArchitecture.Application.Common.Interfaces
+namespace BerkeGaming.Application.Common.Interfaces
 {
     public interface IIdentityService
     {

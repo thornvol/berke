@@ -1,15 +1,15 @@
-﻿using CleanArchitecture.Application.Common.Interfaces;
-using CleanArchitecture.Infrastructure.Files;
-using CleanArchitecture.Infrastructure.Identity;
-using CleanArchitecture.Infrastructure.Persistence;
-using CleanArchitecture.Infrastructure.Services;
+﻿using BerkeGaming.Application.Common.Interfaces;
+using BerkeGaming.Infrastructure.Files;
+using BerkeGaming.Infrastructure.Identity;
+using BerkeGaming.Infrastructure.Persistence;
+using BerkeGaming.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CleanArchitecture.Infrastructure
+namespace BerkeGaming.Infrastructure
 {
     public static class DependencyInjection
     {

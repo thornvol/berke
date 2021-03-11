@@ -1,8 +1,8 @@
-﻿using CleanArchitecture.Domain.Entities;
+﻿using BerkeGaming.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace CleanArchitecture.Infrastructure.Persistence.Configurations
+namespace BerkeGaming.Infrastructure.Persistence.Configurations
 {
     public class TodoListConfiguration : IEntityTypeConfiguration<TodoList>
     {
@@ -13,7 +13,7 @@ namespace CleanArchitecture.Infrastructure.Persistence.Configurations
                 .IsRequired();
 
             builder
-                .OwnsOne(b => b.Colour);
+                .OwnsOne(b => b.Color);
         }
     }
 }

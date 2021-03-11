@@ -1,7 +1,7 @@
-﻿using CleanArchitecture.Domain.Common;
-using CleanArchitecture.Domain.Entities;
+﻿using BerkeGaming.Domain.Common;
+using BerkeGaming.Domain.Entities;
 
-namespace CleanArchitecture.Domain.Events
+namespace BerkeGaming.Domain.Events
 {
     public class TodoItemCreatedEvent : DomainEvent
     {

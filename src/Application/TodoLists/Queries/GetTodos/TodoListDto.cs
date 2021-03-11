@@ -1,8 +1,8 @@
-﻿using CleanArchitecture.Application.Common.Mappings;
-using CleanArchitecture.Domain.Entities;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using BerkeGaming.Application.Common.Mappings;
+using BerkeGaming.Domain.Entities;
 
-namespace CleanArchitecture.Application.TodoLists.Queries.GetTodos
+namespace BerkeGaming.Application.TodoLists.Queries.GetTodos
 {
     public class TodoListDto : IMapFrom<TodoList>
     {

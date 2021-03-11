@@ -1,10 +1,10 @@
-﻿using CleanArchitecture.Domain.Common;
-using CleanArchitecture.Domain.Enums;
-using CleanArchitecture.Domain.Events;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using BerkeGaming.Domain.Common;
+using BerkeGaming.Domain.Enums;
+using BerkeGaming.Domain.Events;
 
-namespace CleanArchitecture.Domain.Entities
+namespace BerkeGaming.Domain.Entities
 {
     public class TodoItem : AuditableEntity, IHasDomainEvent
     {

@@ -1,12 +1,12 @@
-﻿using CleanArchitecture.Application.Common.Interfaces;
-using CleanArchitecture.Application.Common.Models;
-using CleanArchitecture.Domain.Common;
+﻿using System;
+using System.Threading.Tasks;
+using BerkeGaming.Application.Common.Interfaces;
+using BerkeGaming.Application.Common.Models;
+using BerkeGaming.Domain.Common;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Threading.Tasks;
 
-namespace CleanArchitecture.Infrastructure.Services
+namespace BerkeGaming.Infrastructure.Services
 {
     public class DomainEventService : IDomainEventService
     {

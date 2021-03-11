@@ -1,11 +1,11 @@
-﻿using CleanArchitecture.Domain.Entities;
-using CleanArchitecture.Domain.ValueObjects;
-using CleanArchitecture.Infrastructure.Identity;
-using Microsoft.AspNetCore.Identity;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
+using BerkeGaming.Domain.Entities;
+using BerkeGaming.Domain.ValueObjects;
+using BerkeGaming.Infrastructure.Identity;
+using Microsoft.AspNetCore.Identity;
 
-namespace CleanArchitecture.Infrastructure.Persistence
+namespace BerkeGaming.Infrastructure.Persistence
 {
     public static class ApplicationDbContextSeed
     {
@@ -35,7 +35,7 @@ namespace CleanArchitecture.Infrastructure.Persistence
                 context.TodoLists.Add(new TodoList
                 {
                     Title = "Shopping",
-                    Colour = Colour.Blue,
+                    Color = Color.Blue,
                     Items =
                     {
                         new TodoItem { Title = "Apples", Done = true },

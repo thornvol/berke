@@ -1,10 +1,10 @@
-﻿using CleanArchitecture.Application.Common.Interfaces;
-using CleanArchitecture.Domain.Entities;
-using MediatR;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
+using BerkeGaming.Application.Common.Interfaces;
+using BerkeGaming.Domain.Entities;
+using MediatR;
 
-namespace CleanArchitecture.Application.TodoLists.Commands.CreateTodoList
+namespace BerkeGaming.Application.TodoLists.Commands.CreateTodoList
 {
     public class CreateTodoListCommand : IRequest<int>
     {

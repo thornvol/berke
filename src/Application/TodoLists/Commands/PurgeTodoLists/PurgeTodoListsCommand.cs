@@ -1,10 +1,10 @@
-﻿using CleanArchitecture.Application.Common.Interfaces;
-using CleanArchitecture.Application.Common.Security;
-using MediatR;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
+using BerkeGaming.Application.Common.Interfaces;
+using BerkeGaming.Application.Common.Security;
+using MediatR;
 
-namespace CleanArchitecture.Application.TodoLists.Commands.PurgeTodoLists
+namespace BerkeGaming.Application.TodoLists.Commands.PurgeTodoLists
 {
     [Authorize(Roles = "Administrator")]
     [Authorize(Policy = "CanPurge")]

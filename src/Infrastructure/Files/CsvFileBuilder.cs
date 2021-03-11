@@ -1,12 +1,12 @@
-﻿using CleanArchitecture.Application.Common.Interfaces;
-using CleanArchitecture.Application.TodoLists.Queries.ExportTodos;
-using CleanArchitecture.Infrastructure.Files.Maps;
-using CsvHelper;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using BerkeGaming.Application.Common.Interfaces;
+using BerkeGaming.Application.TodoLists.Queries.ExportTodos;
+using BerkeGaming.Infrastructure.Files.Maps;
+using CsvHelper;
 
-namespace CleanArchitecture.Infrastructure.Files
+namespace BerkeGaming.Infrastructure.Files
 {
     public class CsvFileBuilder : ICsvFileBuilder
     {

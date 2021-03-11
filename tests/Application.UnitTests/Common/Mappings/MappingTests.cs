@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using CleanArchitecture.Application.Common.Mappings;
-using CleanArchitecture.Application.TodoLists.Queries.GetTodos;
-using CleanArchitecture.Domain.Entities;
 using NUnit.Framework;
 using System;
 using System.Runtime.Serialization;
+using BerkeGaming.Application.Common.Mappings;
+using BerkeGaming.Application.TodoLists.Queries.GetTodos;
+using BerkeGaming.Domain.Entities;
 
 namespace CleanArchitecture.Application.UnitTests.Common.Mappings
 {

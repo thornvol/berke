@@ -1,8 +1,8 @@
-﻿using CleanArchitecture.Application.Common.Models;
+﻿using System.Linq;
+using BerkeGaming.Application.Common.Models;
 using Microsoft.AspNetCore.Identity;
-using System.Linq;
 
-namespace CleanArchitecture.Infrastructure.Identity
+namespace BerkeGaming.Infrastructure.Identity
 {
     public static class IdentityResultExtensions
     {

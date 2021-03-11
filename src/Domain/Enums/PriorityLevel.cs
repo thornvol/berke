@@ -1,4 +1,4 @@
-﻿namespace CleanArchitecture.Domain.Enums
+﻿namespace BerkeGaming.Domain.Enums
 {
     public enum PriorityLevel
     {

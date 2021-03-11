@@ -1,11 +1,11 @@
-﻿using CleanArchitecture.Application.Common.Exceptions;
-using CleanArchitecture.Application.TodoItems.Commands.CreateTodoItem;
-using CleanArchitecture.Application.TodoLists.Commands.CreateTodoList;
-using CleanArchitecture.Domain.Entities;
-using FluentAssertions;
+﻿using FluentAssertions;
 using NUnit.Framework;
 using System;
 using System.Threading.Tasks;
+using BerkeGaming.Application.Common.Exceptions;
+using BerkeGaming.Application.TodoItems.Commands.CreateTodoItem;
+using BerkeGaming.Application.TodoLists.Commands.CreateTodoList;
+using BerkeGaming.Domain.Entities;
 
 namespace CleanArchitecture.Application.IntegrationTests.TodoItems.Commands
 {

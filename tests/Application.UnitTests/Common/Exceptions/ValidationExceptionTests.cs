@@ -1,9 +1,9 @@
-﻿using CleanArchitecture.Application.Common.Exceptions;
-using FluentAssertions;
+﻿using FluentAssertions;
 using FluentValidation.Results;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using BerkeGaming.Application.Common.Exceptions;
 
 namespace CleanArchitecture.Application.UnitTests.Common.Exceptions
 {

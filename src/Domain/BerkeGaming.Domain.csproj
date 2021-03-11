@@ -1,0 +1,9 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>BerkeGaming.Domain</RootNamespace>
+    <AssemblyName>BerkeGaming.Domain</AssemblyName>
+  </PropertyGroup>
+
+</Project>

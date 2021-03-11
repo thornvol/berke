@@ -1,9 +1,9 @@
-﻿using CleanArchitecture.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
+using BerkeGaming.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
-namespace CleanArchitecture.Application.Common.Interfaces
+namespace BerkeGaming.Application.Common.Interfaces
 {
     public interface IApplicationDbContext
     {

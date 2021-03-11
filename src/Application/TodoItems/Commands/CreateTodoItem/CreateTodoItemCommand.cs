@@ -1,11 +1,11 @@
-﻿using CleanArchitecture.Application.Common.Interfaces;
-using CleanArchitecture.Domain.Entities;
-using CleanArchitecture.Domain.Events;
-using MediatR;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
+using BerkeGaming.Application.Common.Interfaces;
+using BerkeGaming.Domain.Entities;
+using BerkeGaming.Domain.Events;
+using MediatR;
 
-namespace CleanArchitecture.Application.TodoItems.Commands.CreateTodoItem
+namespace BerkeGaming.Application.TodoItems.Commands.CreateTodoItem
 {
     public class CreateTodoItemCommand : IRequest<int>
     {

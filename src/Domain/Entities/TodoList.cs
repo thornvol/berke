@@ -1,8 +1,8 @@
-﻿using CleanArchitecture.Domain.Common;
-using CleanArchitecture.Domain.ValueObjects;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using BerkeGaming.Domain.Common;
+using BerkeGaming.Domain.ValueObjects;
 
-namespace CleanArchitecture.Domain.Entities
+namespace BerkeGaming.Domain.Entities
 {
     public class TodoList : AuditableEntity
     {
@@ -10,7 +10,7 @@ namespace CleanArchitecture.Domain.Entities
 
         public string Title { get; set; }
 
-        public Colour Colour { get; set; } = Colour.White;
+        public Color Color { get; set; } = Color.White;
 
         public IList<TodoItem> Items { get; private set; } = new List<TodoItem>();
     }

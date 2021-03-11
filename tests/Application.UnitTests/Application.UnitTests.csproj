@@ -20,8 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Application\Application.csproj" />
-    <ProjectReference Include="..\..\src\Infrastructure\Infrastructure.csproj" />
+    <ProjectReference Include="..\..\src\Application\BerkeGaming.Application.csproj" />
+    <ProjectReference Include="..\..\src\Domain\BerkeGaming.Domain.csproj" />
+    <ProjectReference Include="..\..\src\Infrastructure\BerkeGaming.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

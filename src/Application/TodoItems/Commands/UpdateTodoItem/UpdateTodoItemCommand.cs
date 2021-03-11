@@ -1,11 +1,11 @@
-﻿using CleanArchitecture.Application.Common.Exceptions;
-using CleanArchitecture.Application.Common.Interfaces;
-using CleanArchitecture.Domain.Entities;
-using MediatR;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
+using BerkeGaming.Application.Common.Exceptions;
+using BerkeGaming.Application.Common.Interfaces;
+using BerkeGaming.Domain.Entities;
+using MediatR;
 
-namespace CleanArchitecture.Application.TodoItems.Commands.UpdateTodoItem
+namespace BerkeGaming.Application.TodoItems.Commands.UpdateTodoItem
 {
     public class UpdateTodoItemCommand : IRequest
     {

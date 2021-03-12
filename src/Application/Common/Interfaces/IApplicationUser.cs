@@ -13,6 +13,6 @@ namespace BerkeGaming.Application.Common.Interfaces
     {
         string UserName { get; set; }
         string PasswordHash { get; set; }
-        bool IsAdmin { get; set; }
+        bool IsAdministrator { get; set; }
     }
 }

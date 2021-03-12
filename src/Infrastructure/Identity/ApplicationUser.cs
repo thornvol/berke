@@ -9,6 +9,6 @@ namespace BerkeGaming.Infrastructure.Identity
         /// Is the user an Administrator.
         /// Add new field to Asp.net's identity database.
         /// </summary>
-        public bool IsAdmin { get; set; }
+        public bool IsAdministrator { get; set; }
     }
 }

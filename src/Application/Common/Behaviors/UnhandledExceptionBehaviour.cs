@@ -6,11 +6,11 @@ using Microsoft.Extensions.Logging;
 
 namespace BerkeGaming.Application.Common.Behaviors
 {
-    public class UnhandledExceptionBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+    public class UnhandledExceptionBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     {
         private readonly ILogger<TRequest> _logger;
 
-        public UnhandledExceptionBehaviour(ILogger<TRequest> logger)
+        public UnhandledExceptionBehavior(ILogger<TRequest> logger)
         {
             _logger = logger;
         }

@@ -1,12 +1,8 @@
 ﻿using AutoMapper;
-using NUnit.Framework;
-using System;
-using System.Runtime.Serialization;
 using BerkeGaming.Application.Common.Mappings;
-using BerkeGaming.Application.TodoLists.Queries.GetTodos;
-using BerkeGaming.Domain.Entities;
+using NUnit.Framework;
 
-namespace CleanArchitecture.Application.UnitTests.Common.Mappings
+namespace BerkeGaming.Application.UnitTests.Common.Mappings
 {
     public class MappingTests
     {
@@ -27,25 +23,6 @@ namespace CleanArchitecture.Application.UnitTests.Common.Mappings
         public void ShouldHaveValidConfiguration()
         {
             _configuration.AssertConfigurationIsValid();
-        }
-        
-        [Test]
-        [TestCase(typeof(TodoList), typeof(TodoListDto))]
-        [TestCase(typeof(TodoItem), typeof(TodoItemDto))]
-        public void ShouldSupportMappingFromSourceToDestination(Type source, Type destination)
-        {
-            var instance = GetInstanceOf(source);
-
-            _mapper.Map(instance, source, destination);
-        }
-
-        private object GetInstanceOf(Type type)
-        {
-            if (type.GetConstructor(Type.EmptyTypes) != null)
-                return Activator.CreateInstance(type);
-
-            // Type without parameterless constructor
-            return FormatterServices.GetUninitializedObject(type);
         }
     }
 }

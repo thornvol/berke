@@ -1,5 +1,4 @@
 ﻿using BerkeGaming.Application.Common.Interfaces;
-using BerkeGaming.Infrastructure.Files;
 using BerkeGaming.Infrastructure.Identity;
 using BerkeGaming.Infrastructure.Persistence;
 using BerkeGaming.Infrastructure.Services;
@@ -37,12 +36,8 @@ namespace BerkeGaming.Infrastructure
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            services.AddIdentityServer()
-                .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
-
             services.AddTransient<IDateTime, DateTimeService>();
             services.AddTransient<IIdentityService, IdentityService>();
-            services.AddTransient<ICsvFileBuilder, CsvFileBuilder>();
 
             services.AddAuthentication()
                 .AddIdentityServerJwt();

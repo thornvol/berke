@@ -1,11 +1,11 @@
-﻿using FluentAssertions;
-using FluentValidation.Results;
-using NUnit.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using BerkeGaming.Application.Common.Exceptions;
+using FluentAssertions;
+using FluentValidation.Results;
+using NUnit.Framework;
 
-namespace CleanArchitecture.Application.UnitTests.Common.Exceptions
+namespace BerkeGaming.Application.UnitTests.Common.Exceptions
 {
     public class ValidationExceptionTests
     {

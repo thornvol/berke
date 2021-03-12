@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>CleanArchitecture.Application.IntegrationTests</RootNamespace>
-    <AssemblyName>CleanArchitecture.Application.IntegrationTests</AssemblyName>
+    <RootNamespace>BerkeGaming.Application.IntegrationTests</RootNamespace>
+    <AssemblyName>BerkeGaming.Application.IntegrationTests</AssemblyName>
     
     <IsPackable>false</IsPackable>
   </PropertyGroup>

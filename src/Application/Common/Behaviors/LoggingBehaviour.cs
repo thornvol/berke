@@ -6,13 +6,13 @@ using Microsoft.Extensions.Logging;
 
 namespace BerkeGaming.Application.Common.Behaviors
 {
-    public class LoggingBehaviour<TRequest> : IRequestPreProcessor<TRequest>
+    public class LoggingBehavior<TRequest> : IRequestPreProcessor<TRequest>
     {
         private readonly ILogger _logger;
         private readonly ICurrentUserService _currentUserService;
         private readonly IIdentityService _identityService;
 
-        public LoggingBehaviour(ILogger<TRequest> logger, ICurrentUserService currentUserService, IIdentityService identityService)
+        public LoggingBehavior(ILogger<TRequest> logger, ICurrentUserService currentUserService, IIdentityService identityService)
         {
             _logger = logger;
             _currentUserService = currentUserService;
@@ -23,7 +23,7 @@ namespace BerkeGaming.Application.Common.Behaviors
         {
             var requestName = typeof(TRequest).Name;
             var userId = _currentUserService.UserId ?? string.Empty;
-            string userName = string.Empty;
+            var userName = string.Empty;
 
             if (!string.IsNullOrEmpty(userId))
             {

@@ -10,12 +10,12 @@ using MediatR;
 
 namespace BerkeGaming.Application.Common.Behaviors
 {
-    public class AuthorizationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+    public class AuthorizationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     {
         private readonly ICurrentUserService _currentUserService;
         private readonly IIdentityService _identityService;
 
-        public AuthorizationBehaviour(
+        public AuthorizationBehavior(
             ICurrentUserService currentUserService,
             IIdentityService identityService)
         {

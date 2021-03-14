@@ -30,7 +30,7 @@ namespace BerkeGaming.Application.Common.Behaviors
             if (authorizeAttributes.Any())
             {
                 // Must be authenticated user
-                if (_currentUserService.UserId == null)
+                if (_currentUserService.UserName == null)
                 {
                     throw new UnauthorizedAccessException();
                 }
@@ -45,7 +45,7 @@ namespace BerkeGaming.Application.Common.Behaviors
                         var authorized = false;
                         foreach (var role in roles)
                         {
-                            var isInRole = await _identityService.IsInRoleAsync(_currentUserService.UserId, role.Trim());
+                            var isInRole = await _identityService.IsInRoleAsync(_currentUserService.UserName, role.Trim());
                             if (isInRole)
                             {
                                 authorized = true;
@@ -67,7 +67,7 @@ namespace BerkeGaming.Application.Common.Behaviors
                 {
                     foreach(var policy in authorizeAttributesWithPolicies.Select(a => a.Policy))
                     {
-                        var authorized = await _identityService.AuthorizeAsync(_currentUserService.UserId, policy);
+                        var authorized = await _identityService.AuthorizeAsync(_currentUserService.UserName, policy);
 
                         if (!authorized)
                         {

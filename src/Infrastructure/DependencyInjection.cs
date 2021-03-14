@@ -12,12 +12,14 @@ namespace BerkeGaming.Infrastructure
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddInfrastructure(this IServiceCollection services,
+            IConfiguration configuration)
         {
+            // handle in memory db
             if (configuration.GetValue<bool>("UseInMemoryDatabase"))
             {
                 services.AddDbContext<ApplicationDbContext>(options =>
-                    options.UseInMemoryDatabase("CleanArchitectureDb"));
+                    options.UseInMemoryDatabase("ApplicationDb"));
             }
             else
             {
@@ -27,21 +29,30 @@ namespace BerkeGaming.Infrastructure
                         b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
             }
 
+            // Add Application Db Context to service container
             services.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
+
+            // Add repository to service container
+            services.AddScoped<IApplicationDbRepository, ApplicationDbRepository>();
+
+            // Add UoW
+            services.AddScoped<IUnityOfWork, UnitOfWork>();
 
             services.AddScoped<IDomainEventService, DomainEventService>();
 
-            services
-                .AddDefaultIdentity<ApplicationUser>()
-                .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            // Not using Asp.Net Identity/Identity serverS
+            //services
+            //    .AddDefaultIdentity<ApplicationUser>()
+            //    .AddRoles<IdentityRole>()
+            //    .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            services.AddTransient<IDateTime, DateTimeService>();
-            services.AddTransient<IIdentityService, IdentityService>();
+            //services.AddTransient<IDateTime, DateTimeService>();
+            //services.AddTransient<IIdentityService, IdentityService>();
 
-            services.AddAuthentication()
-                .AddIdentityServerJwt();
+            // Add authentication
+            services.AddAuthentication();
 
+            // Add Authorization policy
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("CanPurge", policy => policy.RequireRole("Administrator"));

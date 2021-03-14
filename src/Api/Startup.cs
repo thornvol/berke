@@ -45,8 +45,6 @@ namespace BerkeGaming.Api
                 options.Filters.Add<ApiExceptionFilterAttribute>())
                     .AddFluentValidation();
 
-            services.AddRazorPages();
-
             // Customise default API behaviour
             services.Configure<ApiBehaviorOptions>(options =>
             {
@@ -54,10 +52,6 @@ namespace BerkeGaming.Api
             });
 
             // In production, the Angular files will be served from this directory
-            services.AddSpaStaticFiles(configuration =>
-            {
-                configuration.RootPath = "ClientApp/dist";
-            });
 
             services.AddOpenApiDocument(configure =>
             {

@@ -8,6 +8,8 @@ namespace BerkeGaming.Application.Common.Interfaces
 {
     public interface IApplicationDbContext
     {
+        DbSet<User> Users { get; set; }
+
         DbSet<Game> Games { get; set; }
 
         DbSet<Genre> Genres { get; set; }

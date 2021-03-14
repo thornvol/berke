@@ -175,26 +175,9 @@ namespace BerkeGaming.Infrastructure.Persistence.Migrations
                 filter: "[Name] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserGame_GameId",
-                table: "UserGames",
-                column: "GameId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_UserGame_UserId",
-                table: "UserGames",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_UserGames_GameId",
                 table: "UserGames",
-                column: "GameId",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_UserGames_UserId",
-                table: "UserGames",
-                column: "UserId",
-                unique: true);
+                column: "GameId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_UserName",

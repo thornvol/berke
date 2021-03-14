@@ -23,7 +23,7 @@ namespace BerkeGaming.Infrastructure.Persistence.Configurations
             entity.HasKey(e => e.GameId);
 
             // Name column
-            entity.HasIndex(e => e.Name, "IX_Games_Name").IsUnique().HasFilter("[Name] IS NOT NULL");
+            entity.HasIndex(e => e.Name, "IX_Games_Name").IsUnique().HasFilter("[Name] IS NOT NULL").IsUnique();
             
             // Set length to 256 (arbitrary) and don't allow nulls
             entity.Property(e => e.Name)
@@ -31,7 +31,7 @@ namespace BerkeGaming.Infrastructure.Persistence.Configurations
                 .IsRequired();
 
             // Release Date column
-            entity.HasIndex(e => e.ReleaseDate, "IX_Games_ReleaseDate").IsUnique(false);
+            entity.HasIndex(e => e.ReleaseDate, "IX_Games_ReleaseDate");
 
             // Set don't allow nulls
             entity.Property(e => e.ReleaseDate)

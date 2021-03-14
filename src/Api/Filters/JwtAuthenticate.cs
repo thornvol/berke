@@ -25,7 +25,7 @@ namespace BerkeGaming.Api.Filters
             var request = context.HttpContext.Request;
             var authorization = AuthenticationHeaderValue.Parse(request.Headers["Authorization"]);
 
-            if (authorization == null || authorization.Scheme != "Bearer")
+            if (authorization == null || authorization.Scheme.ToLower() != "bearer")
             {
                 return;
             }

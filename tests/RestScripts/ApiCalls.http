@@ -1,0 +1,56 @@
+# Scripts to test API using VS Code Rest Client
+
+@baseApiAddress = http://localhost:5000
+@authRoute = auth
+@collectionRoute = collection
+@gamesRoute = games
+@contentType = application/json
+
+## Get JWT Token
+# @name jwt
+POST {{baseApiAddress}}/{{authRoute}} HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+userName=harry
+&password=hedwig
+
+###
+
+##########################################################
+# Happy path tests
+##########################################################
+
+## Get Games for User
+GET {{baseApiAddress}}/{{collectionRoute}} HTTP/1.1
+Authorization: bearer {{jwt}}
+Content-Type: {{contentType}}
+
+###
+
+## Delete game for user
+@gameId = 1
+DELETE {{baseApiAddress}}/{{collectionRoute}}/{{gameId}}
+content-type: application/json
+Authorization: bearer {{jwt}}
+
+###
+
+## Add Game
+POST {{baseApiAddress}}/{{gamesRoute}}
+content-type: application/json
+Authorization: bearer {{jwt}}
+
+{
+    "name": "Halo2",
+    "releaseDate": "",
+    "overview": "",
+    "publisher": {
+        "publisherId": 1
+    },
+    "genre": [
+        {"genreId": 1},
+        {"genreId": 2},
+    ]
+}
+
+###

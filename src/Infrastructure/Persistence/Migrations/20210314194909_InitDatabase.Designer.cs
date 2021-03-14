@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BerkeGaming.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210313231113_InitDatabase")]
+    [Migration("20210314194909_InitDatabase")]
     partial class InitDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -206,15 +206,7 @@ namespace BerkeGaming.Infrastructure.Persistence.Migrations
 
                     b.HasKey("UserId", "GameId");
 
-                    b.HasIndex("GameId")
-                        .IsUnique();
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
-
-                    b.HasIndex(new[] { "GameId" }, "IX_UserGame_GameId");
-
-                    b.HasIndex(new[] { "UserId" }, "IX_UserGame_UserId");
+                    b.HasIndex("GameId");
 
                     b.ToTable("UserGames");
                 });
@@ -246,14 +238,14 @@ namespace BerkeGaming.Infrastructure.Persistence.Migrations
             modelBuilder.Entity("BerkeGaming.Domain.Entities.Games.UserGame", b =>
                 {
                     b.HasOne("BerkeGaming.Domain.Entities.Games.Game", "Game")
-                        .WithOne()
-                        .HasForeignKey("BerkeGaming.Domain.Entities.Games.UserGame", "GameId")
+                        .WithMany()
+                        .HasForeignKey("GameId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("BerkeGaming.Domain.Entities.Games.User", "User")
-                        .WithOne()
-                        .HasForeignKey("BerkeGaming.Domain.Entities.Games.UserGame", "UserId")
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

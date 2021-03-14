@@ -24,7 +24,7 @@ namespace BerkeGaming.Infrastructure.Persistence.Configurations
 
             //---------------------------
             // Name column
-            entity.HasIndex(e => e.Name, "IX_Genres_Name").IsUnique().HasFilter("[Name] IS NOT NULL");
+            entity.HasIndex(e => e.Name, "IX_Genres_Name").IsUnique().HasFilter("[Name] IS NOT NULL").IsUnique();
 
             // Set length to 256 (arbitrary) and don't allow nulls
             entity.Property(e => e.Name)

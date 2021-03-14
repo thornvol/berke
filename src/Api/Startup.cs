@@ -1,17 +1,21 @@
+using System;
 using System.Linq;
 using BerkeGaming.Api.Filters;
 using BerkeGaming.Api.Services;
 using BerkeGaming.Application;
 using BerkeGaming.Application.Common.Interfaces;
 using BerkeGaming.Infrastructure;
+using BerkeGaming.Infrastructure.Identity;
 using BerkeGaming.Infrastructure.Persistence;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using NSwag;
 using NSwag.Generation.Processors.Security;
 
@@ -37,6 +41,21 @@ namespace BerkeGaming.Api
             services.AddSingleton<ICurrentUserService, CurrentUserService>();
 
             services.AddHttpContextAccessor();
+
+            // Add authentication
+            services.AddAuthentication(opt =>
+            {
+                opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(opt =>
+            {
+                opt.TokenValidationParameters = new TokenValidationParameters 
+                {
+                    IssuerSigningKey = new SymmetricSecurityKey(Convert.FromBase64String(JwtTokenHelper.Secret)),
+                    ValidateAudience = false,
+                    ValidateIssuer = false,
+                };
+            });
 
             services.AddHealthChecks()
                 .AddDbContextCheck<ApplicationDbContext>();
@@ -86,10 +105,11 @@ namespace BerkeGaming.Api
             app.UseHealthChecks("/health");
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            if (!env.IsDevelopment())
-            {
-                app.UseSpaStaticFiles();
-            }
+
+            //if (!env.IsDevelopment())
+            //{
+            //    app.UseSpaStaticFiles();
+            //}
 
             app.UseSwaggerUi3(settings =>
             {
@@ -100,14 +120,11 @@ namespace BerkeGaming.Api
             app.UseRouting();
 
             app.UseAuthentication();
-            app.UseIdentityServer();
+            //app.UseIdentityServer();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller}/{action=Index}/{id?}");
-                endpoints.MapRazorPages();
+                endpoints.MapControllers();
             });
         }
     }

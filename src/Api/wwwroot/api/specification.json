@@ -14,11 +14,15 @@
         "operationId": "Game_GetGames",
         "parameters": [
           {
-            "name": "UserName",
+            "name": "query",
             "in": "query",
             "schema": {
-              "type": "string",
-              "nullable": true
+              "nullable": true,
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/GetGamesQuery"
+                }
+              ]
             },
             "x-position": 1
           }
@@ -72,18 +76,86 @@
           "x-position": 1
         },
         "responses": {
-          "201": {
+          "204": {
+            "description": ""
+          },
+          "422": {
             "description": "",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/GameDto"
-                  }
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Game"
+        ],
+        "operationId": "Game_DeleteGameForUser",
+        "parameters": [
+          {
+            "name": "GameId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          },
+          "422": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
+      }
+    },
+    "/games": {
+      "post": {
+        "tags": [
+          "Game"
+        ],
+        "operationId": "Game_AddGame",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddGameCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "201": {
+            "description": ""
           },
           "422": {
             "description": "",
@@ -258,6 +330,10 @@
           }
         }
       },
+      "GetGamesQuery": {
+        "type": "object",
+        "additionalProperties": false
+      },
       "AddGameToUserCommand": {
         "type": "object",
         "additionalProperties": false,
@@ -265,6 +341,20 @@
           "gameId": {
             "type": "integer",
             "format": "int32"
+          }
+        }
+      },
+      "AddGameCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "game": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/GameDto"
+              }
+            ]
           }
         }
       }

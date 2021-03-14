@@ -7,18 +7,21 @@ using BerkeGaming.Application.Common.Models;
 using BerkeGaming.Infrastructure.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace BerkeGaming.Api.Controllers
 {
-    [Authorize(AuthenticationSchemes = "Bearer")]
+    [Authorize]
     [ApiController]
     [Produces("application/json")]
     [Route("")]
     public class SecurityController : ApiControllerBase
     {
-        public SecurityController()
+        private readonly ILogger<SecurityController> _logger;
+
+        public SecurityController(ILogger<SecurityController> logger)
         {
-            
+            _logger = logger;
         }
 
         [AllowAnonymous]

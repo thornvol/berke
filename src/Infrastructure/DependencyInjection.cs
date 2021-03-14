@@ -38,6 +38,7 @@ namespace BerkeGaming.Infrastructure
             // Add UoW
             services.AddScoped<IUnityOfWork, UnitOfWork>();
 
+            services.AddTransient<IDateTime, DateTimeService>();
             services.AddScoped<IDomainEventService, DomainEventService>();
 
             // Not using Asp.Net Identity/Identity serverS
@@ -45,18 +46,16 @@ namespace BerkeGaming.Infrastructure
             //    .AddDefaultIdentity<ApplicationUser>()
             //    .AddRoles<IdentityRole>()
             //    .AddEntityFrameworkStores<ApplicationDbContext>();
-
-            //services.AddTransient<IDateTime, DateTimeService>();
             //services.AddTransient<IIdentityService, IdentityService>();
 
-            // Add authentication
-            services.AddAuthentication();
+            //// Add authentication
+            //services.AddAuthentication();
 
-            // Add Authorization policy
-            services.AddAuthorization(options =>
-            {
-                options.AddPolicy("CanPurge", policy => policy.RequireRole("Administrator"));
-            });
+            //// Add Authorization policy
+            //services.AddAuthorization(options =>
+            //{
+            //    options.AddPolicy("CanPurge", policy => policy.RequireRole("Administrator"));
+            //});
 
             return services;
         }

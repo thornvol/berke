@@ -16,7 +16,7 @@ using Moq;
 using NUnit.Framework;
 using Respawn;
 
-namespace CleanArchitecture.Application.IntegrationTests
+namespace BerkeGaming.Application.IntegrationTests
 {
     [SetUpFixture]
     public class Testing

@@ -29,6 +29,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BerkeGaming.Api", "src\Api\BerkeGaming.Api.csproj", "{F55FC06B-F6D6-498A-8531-A504315B7825}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RestScripts", "RestScripts", "{7600CFE4-B303-4997-96AB-5EB50E128C61}"
+	ProjectSection(SolutionItems) = preProject
+		tests\RestScripts\ApiCalls.http = tests\RestScripts\ApiCalls.http
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,4 +1,13 @@
 
+### Open Source Packages Used
+* [MediatR](https://github.com/jbogard/MediatR) - implements CQRS and dispatching
+* [Automapper](https://github.com/AutoMapper/AutoMapper) - mapping to/from entities and dtos.
+* [FluentValidation](https://github.com/FluentValidation/FluentValidation) - cleaner validations
+* [FluentAssertions](https://github.com/fluentassertions/fluentassertions) - for unit tests
+* [Nswag](https://github.com/RicoSuter/NSwag) - creates Open API docs/endpoints
+
+---
+
 ### Testing Api Calls
 
 * In Visual Studio Code, install the extension VS Rest Client (repo is [here](https://github.com/Huachao/vscode-restclient)) .
@@ -9,7 +18,7 @@
 ---
 
 ### Open Api Document
-* Start Api project and navigate to https://localhost:5001/api
+* Start Api project and navigate to http://localhost:5000/api
 
 ---
 

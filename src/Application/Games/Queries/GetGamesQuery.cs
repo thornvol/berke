@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using BerkeGaming.Application.Common.Interfaces;
+using BerkeGaming.Application.Common.Mappings;
 using BerkeGaming.Application.Common.Models;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -36,7 +37,7 @@ namespace BerkeGaming.Application.Games.Queries
         {
             var games = await _repository.GetGamesForUser(_currentUserService.UserName);
 
-            return await games.ProjectTo<GameDto>(_mapper.ConfigurationProvider).ToListAsync(cancellationToken);
+            return await games.ProjectToListAsync<GameDto>(_mapper.ConfigurationProvider);
         }
     }
 }

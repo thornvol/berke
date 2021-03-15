@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>CleanArchitecture.Domain.UnitTests</RootNamespace>
-    <AssemblyName>CleanArchitecture.Domain.UnitTests</AssemblyName>
+    <RootNamespace>BerkeGamin.Domain.UnitTests</RootNamespace>
+    <AssemblyName>BerkeGaming.Domain.UnitTests</AssemblyName>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>

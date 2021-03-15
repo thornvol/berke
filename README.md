@@ -1,3 +1,6 @@
+### Note
+* Before running, be sure to change the SQL Server connection string in **appSettings.json**.
+
 
 ### Open Source Packages Used
 * [MediatR](https://github.com/jbogard/MediatR) - implements CQRS and dispatching

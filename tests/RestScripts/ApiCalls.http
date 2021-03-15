@@ -16,41 +16,73 @@ userName=harry
 
 ###
 
+# userName=hermione
+# &password=crookshanks
+
+
+
 ##########################################################
 # Happy path tests
 ##########################################################
 
-## Get Games for User
+# Get Games for User
 GET {{baseApiAddress}}/{{collectionRoute}} HTTP/1.1
-Authorization: bearer {{jwt}}
+Authorization: Bearer {{jwt.response.body.value}}
 Content-Type: {{contentType}}
 
 ###
 
-## Delete game for user
-@gameId = 1
-DELETE {{baseApiAddress}}/{{collectionRoute}}/{{gameId}}
-content-type: application/json
-Authorization: bearer {{jwt}}
+# Add Game for User
+## Example: Game Id 2 (Doom) to Harry
+POST {{baseApiAddress}}/{{collectionRoute}} HTTP/1.1
+Authorization: Bearer {{jwt.response.body.value}}
+Content-Type: {{contentType}}
+
+{
+    "gameId": 5
+}
 
 ###
 
-## Add Game
+# Delete game for user
+## Example: Game Id 2 (Doom) for Harry
+@gameId = 100
+DELETE {{baseApiAddress}}/{{collectionRoute}}/{{gameId}}
+content-type: application/json
+# Authorization: Bearer {{jwt.response.body.value}}
+
+###
+
+# Add Game
+## Example: Add Halo 2 with Microsoft as Publisher 
+##          and Adventure,Digital,Science Fiction as Genres
 POST {{baseApiAddress}}/{{gamesRoute}}
 content-type: application/json
-Authorization: bearer {{jwt}}
+Authorization: Bearer {{jwt.response.body.value}}
 
 {
     "name": "Halo2",
-    "releaseDate": "",
-    "overview": "",
-    "publisher": {
-        "publisherId": 1
-    },
-    "genre": [
-        {"genreId": 1},
-        {"genreId": 2},
-    ]
+    "releaseDate": "2004-11-09",
+    "overview": "Halo 2 is a 2004 first-person shooter game developed by Bungie and published by Microsoft Game Studios. Released for the Xbox, the game is the second installment in the Halo franchise and the sequel to 2001's critically acclaimed Halo: Combat Evolved.",
+    "publisherId": 1,
+    "genreIds": [2,9,10]
+}
+
+###
+
+# Add Game
+## Example 2: Add Halo 3 with Microsoft as Publisher 
+##          and Adventure,Digital,Science Fiction as Genres
+POST {{baseApiAddress}}/{{gamesRoute}}
+content-type: application/json
+Authorization: Bearer {{jwt.response.body.value}}
+
+{
+    "name": "Halo3",
+    "releaseDate": "2007-09-25",
+    "overview": "Halo 3 is a 2007 first-person shooter game developed by Bungie for the Xbox 360 console. The third installment in the Halo franchise, the game concludes the story arc begun in 2001's Halo: Combat Evolved and continued in 2004's Halo 2",
+    "publisherId": 1,
+    "genreIds": [2,9,10]
 }
 
 ###

@@ -22,12 +22,6 @@ namespace BerkeGaming.Infrastructure.Services
             _unityOfWork = unityOfWork;
         }
 
-        /// <summary>
-        /// Validate user's password.
-        /// </summary>
-        /// <param name="username">The User Name.</param>
-        /// <param name="password">The User's password.</param>
-        /// <returns></returns>
         public async Task<bool> ValidatePassword(string username, string password)
         {
             if (string.IsNullOrWhiteSpace(username))
@@ -49,11 +43,6 @@ namespace BerkeGaming.Infrastructure.Services
             return user.Password == password;
         }
 
-        /// <summary>
-        /// Retrieve all games for the given user id.
-        /// </summary>
-        /// <param name="username"></param>
-        /// <returns></returns>
         public async Task<IQueryable<Game>> GetGamesForUser(string username)
         {
             // Get user
@@ -68,12 +57,7 @@ namespace BerkeGaming.Infrastructure.Services
             return _context.UserGames?.AsNoTracking()?.Where(ug => ug.User == user)?.Select(ug => ug.Game);
         }
 
-        /// <summary>
-        /// Add Game to User's collection of games.
-        /// </summary>
-        /// <param name="gameId">The Game's Id.</param>
-        /// <param name="userName"></param>
-        /// <returns></returns>
+        
         public async Task<Result> AddGameToUser(int gameId, string userName)
         {
             // Get user
@@ -112,12 +96,6 @@ namespace BerkeGaming.Infrastructure.Services
             return Result.Success();
         }
 
-        /// <summary>
-        /// Delete game from User's collection.
-        /// </summary>
-        /// <param name="gameId">Them Game id to delete.</param>
-        /// <param name="userName"></param>
-        /// <returns></returns>
         public async Task<Result> DeleteGameForUser(int gameId, string userName)
         {
             // Get user
@@ -153,12 +131,6 @@ namespace BerkeGaming.Infrastructure.Services
             return Result.Success();
         }
 
-        /// <summary>
-        /// Add Game to game collection. User must be an administrator.
-        /// </summary>
-        /// <param name="userName"></param>
-        /// <param name="game"></param>
-        /// <returns></returns>
         public async Task<Result> AddGame(string userName, Game game)
         {
             // Get user
@@ -175,6 +147,16 @@ namespace BerkeGaming.Infrastructure.Services
                 throw new UnauthorizedAccessException($"User {user.UserName} is not authorized to add games.");
             }
 
+            if (game.Publisher == null)
+            {
+                throw new NotFoundException($"Publisher is missing.");
+            }
+
+            if (game.Genres == null || game.Genres.Count == 0)
+            {
+                throw new NotFoundException($"Genre(s) are missing.");
+            }
+
             // Add Game
             await _context.Games.AddAsync(game);
 
@@ -184,14 +166,19 @@ namespace BerkeGaming.Infrastructure.Services
             return Result.Success();
         }
 
-        /// <summary>
-        /// Get User by Id.
-        /// </summary>
-        /// <param name="userName"></param>
-        /// <returns></returns>
+        public async Task<ICollection<Genre>> GetGenresById(IEnumerable<int> ids)
+        {
+            return await _context.Genres.Where(g => ids.Contains(g.GenreId)).ToListAsync();
+        }
+
+        public async Task<Publisher> GetPublisherById(int publisherId)
+        {
+            return await _context.Publishers.FindAsync(publisherId);
+        }
+
         public async Task<User> GetUserByName(string userName)
         {
-            return await _context.Users.AsNoTracking().Where(u => u.UserName == userName.Trim()).FirstOrDefaultAsync();
+            return await _context.Users.Where(u => u.UserName == userName.Trim()).FirstOrDefaultAsync();
         }
 
         /// <summary>
@@ -201,7 +188,7 @@ namespace BerkeGaming.Infrastructure.Services
         /// <returns></returns>
         public async Task<Game> GetGameById(int gameId)
         {
-            return await _context.Games.AsNoTracking().Where(u => u.GameId == gameId).FirstOrDefaultAsync();
+            return await _context.Games.Where(u => u.GameId == gameId).FirstOrDefaultAsync();
         }
     }
 }

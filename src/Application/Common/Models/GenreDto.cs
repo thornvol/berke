@@ -14,6 +14,7 @@ namespace BerkeGaming.Application.Common.Models
 
         public string Name { get; set; }
 
-        public IList<GameDto> Games { get; set; }
+        // Exclude list of games for now.
+        //public IList<GameDto> Games { get; set; }
     }
 }

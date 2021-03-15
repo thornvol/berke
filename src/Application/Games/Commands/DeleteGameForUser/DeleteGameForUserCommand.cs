@@ -14,7 +14,6 @@ namespace BerkeGaming.Application.Games.Commands.DeleteGameForUser
 {
     public class DeleteGameForUserCommand : IRequest<bool>
     {
-        [Required]
         public int GameId { get; set; }
     }
 

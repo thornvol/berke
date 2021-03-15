@@ -26,6 +26,8 @@ namespace BerkeGaming.Api.Controllers
 
         [AllowAnonymous]
         [HttpPost("/auth")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(401)]
         public async Task<IActionResult> GetUserToken([FromForm] UserLogin login,
             [FromServices] IApplicationDbRepository repository)
         {
@@ -35,8 +37,13 @@ namespace BerkeGaming.Api.Controllers
                 return Unauthorized();
             }
 
-            var jwt = JwtTokenHelper.GenerateToken(login.UserName);
-            return Ok(jwt);
+            var user = await repository.GetUserByName(login.UserName);
+
+            // Generate token that expires in a year
+            var jwt = JwtTokenHelper.GenerateToken(login.UserName, 525600, user?.IsAdministrator ?? false);
+
+            // wrap toke as an anonymous object
+            return Ok(new {value = jwt});
         }
     }
 }

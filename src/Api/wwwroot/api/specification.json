@@ -79,6 +79,16 @@
           "204": {
             "description": ""
           },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
           "422": {
             "description": "",
             "content": {
@@ -95,7 +105,9 @@
             "JWT": []
           }
         ]
-      },
+      }
+    },
+    "/collection/{gameId}": {
       "delete": {
         "tags": [
           "Game"
@@ -116,6 +128,16 @@
         "responses": {
           "204": {
             "description": ""
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           },
           "422": {
             "description": "",
@@ -170,7 +192,9 @@
         },
         "security": [
           {
-            "JWT": []
+            "JWT": [
+              "Administrator"
+            ]
           }
         ]
       }
@@ -201,12 +225,14 @@
         },
         "responses": {
           "200": {
+            "description": ""
+          },
+          "401": {
             "description": "",
             "content": {
-              "application/octet-stream": {
+              "application/json": {
                 "schema": {
-                  "type": "string",
-                  "format": "binary"
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -265,13 +291,6 @@
           "name": {
             "type": "string",
             "nullable": true
-          },
-          "games": {
-            "type": "array",
-            "nullable": true,
-            "items": {
-              "$ref": "#/components/schemas/GameDto"
-            }
           }
         }
       },
@@ -286,13 +305,6 @@
           "name": {
             "type": "string",
             "nullable": true
-          },
-          "games": {
-            "type": "array",
-            "nullable": true,
-            "items": {
-              "$ref": "#/components/schemas/GameDto"
-            }
           }
         }
       },
@@ -348,13 +360,29 @@
         "type": "object",
         "additionalProperties": false,
         "properties": {
-          "game": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "releaseDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "overview": {
+            "type": "string",
+            "nullable": true
+          },
+          "publisherId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "genreIds": {
+            "type": "array",
             "nullable": true,
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/GameDto"
-              }
-            ]
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            }
           }
         }
       }

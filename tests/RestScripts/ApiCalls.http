@@ -46,10 +46,10 @@ Content-Type: {{contentType}}
 
 # Delete game for user
 ## Example: Game Id 2 (Doom) for Harry
-@gameId = 100
+@gameId = 5
 DELETE {{baseApiAddress}}/{{collectionRoute}}/{{gameId}}
 content-type: application/json
-# Authorization: Bearer {{jwt.response.body.value}}
+Authorization: Bearer {{jwt.response.body.value}}
 
 ###
 
@@ -71,16 +71,16 @@ Authorization: Bearer {{jwt.response.body.value}}
 ###
 
 # Add Game
-## Example 2: Add Halo 3 with Microsoft as Publisher 
+## Example 2: Add Halo 4 with Microsoft as Publisher 
 ##          and Adventure,Digital,Science Fiction as Genres
 POST {{baseApiAddress}}/{{gamesRoute}}
 content-type: application/json
 Authorization: Bearer {{jwt.response.body.value}}
 
 {
-    "name": "Halo3",
-    "releaseDate": "2007-09-25",
-    "overview": "Halo 3 is a 2007 first-person shooter game developed by Bungie for the Xbox 360 console. The third installment in the Halo franchise, the game concludes the story arc begun in 2001's Halo: Combat Evolved and continued in 2004's Halo 2",
+    "name": "Halo4",
+    "releaseDate": "2012-11-06",
+    "overview": "Halo 4 is a first-person shooter developed by 343 Industries and published by Microsoft Studios for the Xbox 360 video game console. The fourth mainline installment and seventh overall in the Halo franchise, the game was released on November 6, 2012",
     "publisherId": 1,
     "genreIds": [2,9,10]
 }
